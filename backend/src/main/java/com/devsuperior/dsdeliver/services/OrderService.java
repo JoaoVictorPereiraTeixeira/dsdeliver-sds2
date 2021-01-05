@@ -19,9 +19,26 @@ public class OrderService {
     @Autowired
     private OrderRepository repository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @Transactional(readOnly = true)
     public List<OrderDTO> findAll(){
         List<Order> list = repository.findOrdersWithProducts();
         return list.stream().map(order -> new OrderDTO(order)).collect(Collectors.toList());
+    }
+
+    @Transactional
+    public OrderDTO insert(OrderDTO dtoRequest){
+        Order order = new Order(dtoRequest);
+
+        for(ProductDTO p : dtoRequest.getProducts()){
+            Product product = productRepository.getOne(p.getId());
+            order.getProducts().add(product);
+        }
+
+        order = repository.save(order);
+        OrderDTO dtoResponse = new OrderDTO(order);
+        return dtoResponse;
     }
 }

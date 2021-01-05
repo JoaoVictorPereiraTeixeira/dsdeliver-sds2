@@ -1,5 +1,7 @@
 package com.devsuperior.dsdeliver.entities;
 
+import com.devsuperior.dsdeliver.dto.OrderDTO;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
@@ -41,6 +43,16 @@ public class Order implements Serializable {
         this.moment = moment;
         this.status = status;
     }
+
+    public Order(OrderDTO dto) {
+        this.id = dto.getId();
+        this.address = dto.getAddress();
+        this.latitude = dto.getLatitude();
+        this.longitude = dto.getLongitude();
+        this.moment = Instant.now();
+        this.status = OrderStatus.PENDING;
+    }
+
 
     public Long getId() {
         return id;
