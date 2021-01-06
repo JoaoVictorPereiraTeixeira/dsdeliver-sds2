@@ -3,6 +3,7 @@ package com.devsuperior.dsdeliver.services;
 import com.devsuperior.dsdeliver.dto.OrderDTO;
 import com.devsuperior.dsdeliver.dto.ProductDTO;
 import com.devsuperior.dsdeliver.entities.Order;
+import com.devsuperior.dsdeliver.entities.OrderStatus;
 import com.devsuperior.dsdeliver.entities.Product;
 import com.devsuperior.dsdeliver.repositories.OrderRepository;
 import com.devsuperior.dsdeliver.repositories.ProductRepository;
@@ -41,4 +42,14 @@ public class OrderService {
         OrderDTO dtoResponse = new OrderDTO(order);
         return dtoResponse;
     }
+
+    @Transactional
+    public OrderDTO setDelivered(Long id){
+        Order order = repository.getOne(id);
+        order.setStatus(OrderStatus.DELIVERED);
+        order = repository.save(order);
+        return new OrderDTO(order);
+    }
+
+
 }
