@@ -1,4 +1,3 @@
-import { ReactComponent } from '*.svg';
 import Footer from '../Footer'
 import './styles.css'
 import {ReactComponent as MainImage} from './main.svg'
