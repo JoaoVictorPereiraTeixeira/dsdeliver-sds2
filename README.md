@@ -1,7 +1,7 @@
 # Delivery - Semana Dev Superior 2
 
 ### Project ###
-Application to ask for food where you can choose many orders and select the destination through google maps, after send the order the Mobile Application will to receive the solicitation so that the deliveryman can select and go out to delivery, this proccess happens in navigation mode 
+Application to order for food where you can choose many orders and select the destination through google maps, after send the order the Mobile Application will to receive the solicitation so that the deliveryman can select and go out to delivery, this proccess happens in navigation mode 
 
 ### Technologies ###
 #### Back end ####
